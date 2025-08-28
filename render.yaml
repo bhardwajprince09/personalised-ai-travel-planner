@@ -1,0 +1,22 @@
+# render.yaml
+services:
+  - type: web
+    name: travel-planner-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    plan: free
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: FRONTEND_URL
+        value: "https://<FRONTEND_SERVICE_URL_PLACEHOLDER>"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+
+  - type: static
+    name: travel-planner-frontend
+    env: static
+    buildCommand: "cd frontend && npm install && npm run build"
+    publishPath: "frontend/dist"
+    plan: free
+    envVars: []
