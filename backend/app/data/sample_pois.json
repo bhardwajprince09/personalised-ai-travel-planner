@@ -1,0 +1,6 @@
+[
+{"id":"poi_1","name":"Famous Museum","city":"Kyoto","lat":35.0116,"lon":135.7681,"tags":["culture","museum"],"price":"cheap","rating":4.5},
+{"id":"poi_2","name":"Tea House","city":"Kyoto","lat":35.0037,"lon":135.7683,"tags":["food","traditional"],"price":"cheap","rating":4.4},
+{"id":"poi_3","name":"Shrine Trail","city":"Kyoto","lat":34.9857,"lon":135.7586,"tags":["hiking","culture","free"],"price":"free","rating":4.8},
+{"id":"poi_4","name":"Modern Art Gallery","city":"Tokyo","lat":35.6895,"lon":139.6917,"tags":["museum","art"],"price":"expensive","rating":4.2}
+]
