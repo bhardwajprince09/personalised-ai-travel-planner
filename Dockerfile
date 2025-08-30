@@ -1,8 +1,10 @@
 # Stage 1: Build frontend
 FROM node:18 AS frontend-builder
 WORKDIR /app/frontend
-RUN npm install
-COPY frontend/ .
+# Copy package.json (and lockfile if exists)
+COPY frontend/package*.json ./
+# Install dependencies (force legacy peer deps for safety)
+RUN npm install --legacy-peer-deps
 RUN npm run build
 
 # Stage 2: Build backend with frontend assets
