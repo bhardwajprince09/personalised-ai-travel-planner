@@ -1,9 +1,25 @@
-FROM node:20-alpine
-WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build
+#FROM node:20-alpine
+#WORKDIR /app
+#COPY . .
+#RUN npm install
+#RUN npm run build
 # serve with a small static server
-RUN npm install -g serve
-EXPOSE 3000
-CMD ["serve","-s","dist","-l","3000"]
+#RUN npm install -g serve
+#EXPOSE 3000
+#CMD ["serve","-s","dist","-l","3000"]
+
+
+# Stage 1: Build
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY frontend/package*.json ./
+RUN npm install --legacy-peer-deps
+COPY frontend/ .
+RUN npm run build
+
+# Stage 2: Serve with nginx
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
